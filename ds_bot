@@ -38,4 +38,4 @@ async def helpme(ctx):
 # #     emodji = [":)", ":(", "0_o", "-_-"]
 # #     return random.choice(emodji)
 
-bot.run("MTE1MjkwNDMxMjM1MjE0NTUwOQ.Gr0YMI.dlBYb7YHSwpKybgEkZ6ySzITlyd7f63ze2Q7no")
+bot.run("token")
