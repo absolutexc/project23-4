@@ -23,7 +23,6 @@ async def heh(ctx, count_heh = 10):
 
 @bot.command()
 async def flip_coin(ctx, flip=10):
-    await ctx.send()
     flip = random.randint(0, 1)
     if flip == 0:
          await ctx.send("ОРЕЛ") 
