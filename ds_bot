@@ -1,0 +1,41 @@
+import discord
+from discord.ext import commands
+from gen_pass import passw
+import random
+# Переменная intents - хранит привилегии бота
+intents = discord.Intents.default()
+# Включаем привелегию на чтение сообщений
+intents.message_content = True
+# Создаем бота в переменной client и передаем все привелегии
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def password(ctx, lenght = 10):
+    await ctx.send(passw(lenght))
+
+@bot.command()
+async def heh(ctx, count_heh = 10):
+    await ctx.send("he" * count_heh)
+
+@bot.command()
+async def flip_coin(ctx, flip=10):
+    await ctx.send()
+    flip = random.randint(0, 1)
+    if flip == 0:
+         return "ОРЕЛ"
+    else:
+         return "РЕШКА"
+    
+@bot.command()
+async def helpme(ctx):
+    await ctx.send(f"Список команд для бота:\n1. !password - сгенерировать пароль из 10 символов\n2. !heh - вывести строку со смехом\n3. !flip_coin - подбросить монетку")
+
+# # def gen_emodji():
+# #     emodji = [":)", ":(", "0_o", "-_-"]
+# #     return random.choice(emodji)
+
+bot.run("MTE1MjkwNDMxMjM1MjE0NTUwOQ.Gr0YMI.dlBYb7YHSwpKybgEkZ6ySzITlyd7f63ze2Q7no")
