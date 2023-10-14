@@ -1,0 +1,31 @@
+import discord
+import os
+from random import choice
+from discord.ext import commands
+    
+# Переменная intents - хранит привилегии бота
+intents = discord.Intents.default()
+# Включаем привелегию на чтение сообщений
+intents.message_content = True
+# Создаем бота в переменной client и передаем все привелегии
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command('video')
+async def video(ctx):
+    await ctx.send(f"Держи вводное видео:\nhttps://www.youtube.com/watch?v=jeyjqi5QCeM")
+
+files = os.listdir('2023-2024/м2у2/tips')
+
+@bot.command('tips')
+async def mem(ctx):
+    file = choice(files)
+    # with open(f'2023-2024/м2у2/tips/{file}', 'rb') as f:
+    #     picture = discord.File(f)
+    f = open(f'2023-2024/м2у2/tips/{file}', 'r', encoding='utf-8')
+    text = f.read()
+    f.close()
+    await ctx.send(text)
